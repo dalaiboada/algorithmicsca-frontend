@@ -9,6 +9,11 @@
     --font-heading: var(--font-sans);
     --font-sans: 'Inter Variable', sans-serif;
     --color-bone: #e6e3dc;
+    --color-brand-purple: #8A3FFC;
+    --color-brand-purple-dark: #6A2FC9;
+    --color-brand-yellow: #FFD54B;
+    --color-brand-yellow-dark: #DDBB5D;
+    --color-brand-yellow-text: #6E5821;
     --animate-focal-1: float-1 22s infinite ease-in-out;
     --animate-focal-2: float-2 26s infinite ease-in-out;
     --animate-focal-3: float-3 30s infinite ease-in-out;
@@ -50,6 +55,10 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --shadow-tactile-purple: 0 4px 0 0 #6A2FC9;
+    --shadow-tactile-purple-hover: 0 2px 0 0 #6A2FC9;
+    --shadow-tactile-yellow: 0 4px 0 0 #DDBB5D;
+    --shadow-tactile-yellow-hover: 0 2px 0 0 #DDBB5D;
 }
 
 :root {
