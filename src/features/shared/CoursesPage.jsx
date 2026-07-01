@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 import { Input } from '@/components/custom/Input';
-import { Checkbox } from '@/components/custom/checkbox';
+import { Checkbox } from '@/components/custom/Checkbox';
 import { PasswordField } from '@/components/custom/PasswordField';
 import { UserIcon } from 'lucide-react';
 
