@@ -79,6 +79,8 @@ input:-webkit-autofill::first-line {
   --shadow-tactile-purple-hover: 0 2px 0 0 #6a2fc9;
   --shadow-tactile-yellow: 0 4px 0 0 #ddbb5d;
   --shadow-tactile-yellow-hover: 0 2px 0 0 #ddbb5d;
+  --shadow-tactile-white: 0 4px 0 0 #e2e8f0;
+  --shadow-tactile-white-hover: 0 2px 0 0 #e2e8f0;
 }
 
 :root {

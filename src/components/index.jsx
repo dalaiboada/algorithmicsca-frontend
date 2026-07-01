@@ -5,5 +5,15 @@ import { Checkbox } from './custom/Checkbox';
 import { Link } from './custom/Link';
 import { Button } from './ui/button';
 import { Toaster } from './ui/sonner';
+import { Spinner } from './custom/Spinner';
 
-export { Typography, Input, PasswordField, Checkbox, Link, Button, Toaster };
+export {
+  Typography,
+  Input,
+  PasswordField,
+  Checkbox,
+  Link,
+  Button,
+  Toaster,
+  Spinner,
+};
