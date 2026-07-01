@@ -6,6 +6,8 @@ import {
   Link,
   Button,
 } from '@/components';
+import { useAuthStore } from '@/stores/auth-store';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '/algorithmics-logo_largo.webp';
 import GoogleIcon from '@/assets/icons/google-icon.svg';
@@ -13,6 +15,16 @@ import GoogleIcon from '@/assets/icons/google-icon.svg';
 import { ArrowRight, Mail } from 'lucide-react';
 
 export const LoginPage = () => {
+  const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    login({ name: 'Demo User', role: 'student', twoFactorEnabled: true });
+    navigate('/dashboard', { replace: true });
+  };
+
   return (
     <div className="flex flex-col items-center w-full">
       <img src={Logo} alt="Algorithmics Logo" className="h-8 w-auto" />
@@ -24,7 +36,7 @@ export const LoginPage = () => {
         <Typography color="gray">Preparate para programar el futuro</Typography>
       </div>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleLogin}>
         <Input
           type="email"
           label="Correo electrónico"
@@ -40,7 +52,7 @@ export const LoginPage = () => {
           <Link to="/auth/reset-password">¿Olvidaste tu contraseña?</Link>
         </div>
 
-        <Button variant="default" size="lg" className="w-full">
+        <Button variant="default" size="lg" className="w-full" type="submit">
           Entrar a la plataforma <ArrowRight className="size-4" />
         </Button>
 
