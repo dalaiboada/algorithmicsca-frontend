@@ -6,7 +6,7 @@ function Input({ id, label, icon, className, ...props }) {
   const inputId = id || autoId;
 
   return (
-    <div className="max-w-[400px] w-full space-y-1.5">
+    <div className="max-w-100 w-full space-y-1.5">
       {label && (
         <label
           htmlFor={inputId}
@@ -16,7 +16,7 @@ function Input({ id, label, icon, className, ...props }) {
         </label>
       )}
 
-      <div className="relative flex items-center rounded-xl bg-white/60 border border-gray-200/80 focus-within:border-[var(--color-brand-purple)] focus-within:ring-0 outline-none transition-all shadow-sm backdrop-blur-sm dark:bg-input/30 dark:border-gray-700 dark:focus-within:border-[var(--color-brand-purple)]">
+      <div className="relative flex items-center rounded-xl bg-white/60 border border-gray-200/80 focus-within:border-(--color-brand-purple) focus-within:ring-0 outline-none transition-all shadow-sm backdrop-blur-sm dark:bg-input/30 dark:border-gray-700 dark:focus-within:border-(--color-brand-purple)">
         {icon && (
           <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
             {React.cloneElement(icon, {
