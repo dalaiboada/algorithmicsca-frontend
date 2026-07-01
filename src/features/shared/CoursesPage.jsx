@@ -1,11 +1,11 @@
 import { useAuthStore } from '@/stores/auth-store';
 import { useNavigate } from 'react-router-dom';
-import { ButtonBrand } from '@/components/custom/ButtonBrand';
+import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-import { InputBrand } from '@/components/custom/InputBrand';
-import { CheckboxBrand } from '@/components/custom/CheckboxBrand';
-import { PasswordFieldBrand } from '@/components/custom/PasswordFieldBrand';
+import { Input } from '@/components/custom/Input';
+import { Checkbox } from '@/components/custom/checkbox';
+import { PasswordField } from '@/components/custom/PasswordField';
 import { UserIcon } from 'lucide-react';
 
 export const CoursesPage = () => {
@@ -23,58 +23,54 @@ export const CoursesPage = () => {
         <h1 className="text-3xl font-heading">Algorithmics</h1>
         <p className="text-muted-foreground">Inicia sesión para continuar</p>
         {/* Botones habilitados */}
-        <ButtonBrand brand="primary" onClick={handleLogin} size="lg">
+        <Button variant="default" onClick={handleLogin} size="lg">
           Entrar a la plataforma
           <ArrowRight className="size-4" />
-        </ButtonBrand>
-        <ButtonBrand brand="secondary" onClick={handleLogin} size="lg">
+        </Button>
+        <Button variant="secondary" onClick={handleLogin} size="lg">
           Entrar a la plataforma
           <ArrowRight className="size-4" />
-        </ButtonBrand>
-        <ButtonBrand brand="subtle" onClick={handleLogin} size="lg">
+        </Button>
+        <Button variant="subtle" onClick={handleLogin} size="lg">
           Entrar a la plataforma
           <ArrowRight className="size-4" />
-        </ButtonBrand>
+        </Button>
         {/* Botones desabilitados */}
-        <ButtonBrand brand="primary" disabled onClick={handleLogin} size="lg">
+        <Button variant="default" disabled onClick={handleLogin} size="lg">
           Entrar a la plataforma
           <ArrowRight className="size-4" />
-        </ButtonBrand>
-        <ButtonBrand brand="secondary" disabled onClick={handleLogin} size="lg">
+        </Button>
+        <Button variant="secondary" disabled onClick={handleLogin} size="lg">
           Entrar a la plataforma
           <ArrowRight className="size-4" />
-        </ButtonBrand>
-        <ButtonBrand brand="subtle" disabled onClick={handleLogin} size="lg">
+        </Button>
+        <Button variant="subtle" disabled onClick={handleLogin} size="lg">
           Entrar a la plataforma
           <ArrowRight className="size-4" />
-        </ButtonBrand>
+        </Button>
         {/* Inputs */}
-        <InputBrand
+        <Input
           type="email"
           label="Correo electrónico"
           placeholder="tu@correo.com"
         />
-        <InputBrand type="text" label="Apellido" placeholder="Pérez" />
-        <PasswordFieldBrand />
-        <PasswordFieldBrand
+        <Input type="text" label="Apellido" placeholder="Pérez" />
+        <PasswordField />
+        <PasswordField
           label="Nueva contraseña"
           placeholder="mín. 8 caracteres"
         />
-        <PasswordFieldBrand aria-invalid data-invalid />
-        <InputBrand
+        <PasswordField aria-invalid data-invalid />
+        <Input
           type="text"
           label="Nombre"
           placeholder="Juan"
           icon={<UserIcon />}
         />
         {/* Checkboxes */}
-        <CheckboxBrand id="remember" label="Recordarme" />
-        <CheckboxBrand id="terms" label="Acepto los términos" defaultChecked />
-        <CheckboxBrand
-          id="disabled-example"
-          label="Opción no disponible"
-          disabled
-        />
+        <Checkbox id="remember" label="Recordarme" />
+        <Checkbox id="terms" label="Acepto los términos" defaultChecked />
+        <Checkbox id="disabled-example" label="Opción no disponible" disabled />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-function InputBrand({ id, label, icon, className, ...props }) {
+function Input({ id, label, icon, className, ...props }) {
   const autoId = React.useId();
   const inputId = id || autoId;
 
@@ -39,6 +39,6 @@ function InputBrand({ id, label, icon, className, ...props }) {
   );
 }
 
-InputBrand.displayName = 'InputBrand';
+Input.displayName = 'Input';
 
-export { InputBrand };
+export { Input };

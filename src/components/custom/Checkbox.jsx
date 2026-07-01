@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { CheckIcon } from 'lucide-react';
 
-function CheckboxBrand({ id, label, className, ...props }) {
+function Checkbox({ id, label, className, ...props }) {
   const autoId = React.useId();
   const checkboxId = id || autoId;
 
@@ -33,6 +33,6 @@ function CheckboxBrand({ id, label, className, ...props }) {
   );
 }
 
-CheckboxBrand.displayName = 'CheckboxBrand';
+Checkbox.displayName = 'Checkbox';
 
-export { CheckboxBrand };
+export { Checkbox };

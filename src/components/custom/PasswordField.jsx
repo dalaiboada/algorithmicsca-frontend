@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { LockIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
 
-function PasswordFieldBrand({
+function PasswordField({
   id,
   label = 'Contraseña',
   placeholder = '••••••••',
@@ -54,6 +54,6 @@ function PasswordFieldBrand({
   );
 }
 
-PasswordFieldBrand.displayName = 'PasswordFieldBrand';
+PasswordField.displayName = 'PasswordField';
 
-export { PasswordFieldBrand };
+export { PasswordField };
