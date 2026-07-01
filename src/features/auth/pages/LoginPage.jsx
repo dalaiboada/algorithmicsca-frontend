@@ -46,11 +46,11 @@ export const LoginPage = () => {
         </Button>
 
         <div className="flex items-center gap-3 py-1">
-          <div className="h-[2px] flex-1 bg-gray-300/50 rounded-full"></div>
+          <div className="h-0.5 flex-1 bg-gray-300/50 rounded-full"></div>
           <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
             o
           </span>
-          <div className="h-[2px] flex-1 bg-gray-300/50 rounded-full"></div>
+          <div className="h-0.5 flex-1 bg-gray-300/50 rounded-full"></div>
         </div>
 
         <Button variant="social" size="lg" className="w-full">

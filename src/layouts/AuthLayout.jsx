@@ -68,7 +68,7 @@ const RightPanel = () => {
       </div>
 
       {/* Mapa */}
-      <div className="relative w-full max-w-[670px] h-[300px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full max-w-167.5 h-75 flex items-center justify-center overflow-hidden">
         {isLoading && <Spinner size="lg" color="brand-purple" />}
 
         <img
@@ -105,7 +105,7 @@ const RightPanel = () => {
 
 export const AuthLayout = () => {
   return (
-    <div className="relative min-h-screen w-screen overflow-hidden bg-[#e6e3dc]">
+    <div className="relative min-h-screen w-screen overflow-hidden bg-bone">
       <AnimatedBackground />
 
       <div className="relative z-10 w-full min-h-screen flex flex-col md:flex-row items-stretch">
