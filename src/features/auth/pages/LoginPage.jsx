@@ -7,7 +7,6 @@ import {
   Button,
   AlertCircleIconComponent,
 } from '@/components';
-import { useAuthStore } from '@/stores/auth-store';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -15,19 +14,17 @@ import Logo from '/algorithmics-logo_largo.webp';
 import GoogleIcon from '@/assets/icons/google-icon.svg';
 
 import { ArrowRight, Mail } from 'lucide-react';
-
-import { useHealth } from '@/features/auth/hooks/useHealth';
+import { useServerHealth } from '@/hooks/useServerHealth';
 
 export const LoginPage = () => {
-  const login = useAuthStore((state) => state.login);
-  const { data, loading, error, checkHealth } = useHealth();
+  const { alert } = useServerHealth();
 
   const [email, setEmail] = useState('');
   const [clave, setClave] = useState('');
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin2 = async (e) => {
     e.preventDefault();
 
     try {
@@ -40,6 +37,10 @@ export const LoginPage = () => {
 
     login({ name: 'Demo User', role: 'student', twoFactorEnabled: true });
     //navigate('/dashboard', { replace: true });
+  };
+
+  const handleLogin = () => {
+    console.log('handleLogin');
   };
 
   return (
@@ -78,13 +79,11 @@ export const LoginPage = () => {
           Entrar a la plataforma <ArrowRight className="size-4" />
         </Button>
 
-        {!error && (
-          <AlertCircleIconComponent
-            Title={data?.message || 'Error'}
-            Description={data?.timestamp || 'Error'}
-            type={error ? 'error' : 'success'}
-          />
-        )}
+        <AlertCircleIconComponent
+          Title={alert.title}
+          Description={alert.description}
+          type={alert.type}
+        />
 
         <div className="flex items-center gap-3 py-1">
           <div className="h-0.5 flex-1 bg-gray-300/50 rounded-full"></div>
