@@ -1,9 +1,8 @@
 import { InternalServerError, errorMap } from './errors.js';
-
-const BASE_URL = 'https://jsonplaceholder.typicode.com';
+import { CONFIG } from '@/config/config.js';
 
 export class ApiClient {
-  constructor(baseUrl = BASE_URL, authToken = null) {
+  constructor(baseUrl = CONFIG.baseUrl, authToken = null) {
     this.baseUrl = baseUrl;
     this.authToken = authToken;
     this.requestInterceptors = [];

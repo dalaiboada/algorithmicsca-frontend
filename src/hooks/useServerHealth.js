@@ -1,4 +1,3 @@
-// hooks/useServerHealth.js
 import { useState, useCallback, useEffect } from 'react';
 import { useApi } from './useApi';
 

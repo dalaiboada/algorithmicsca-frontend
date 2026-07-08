@@ -1,10 +1,9 @@
 import { createContext, useContext, useMemo } from 'react';
 import { ApiClient } from './ApiClient.js';
-import { CONFIG } from '@/config/config.js';
 
 const ApiContext = createContext(null);
 
-const apiInstance = new ApiClient(CONFIG.baseUrl);
+const apiInstance = new ApiClient();
 
 export const ApiProvider = ({ children }) => {
   // useMemo asegura que la instancia no se recree innecesariamente
