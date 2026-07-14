@@ -9,38 +9,34 @@ import {
 } from '@/components';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import Logo from '/algorithmics-logo_largo.webp';
 import GoogleIcon from '@/assets/icons/google-icon.svg';
 
 import { ArrowRight, Mail } from 'lucide-react';
 import { useServerHealth } from '@/hooks/useServerHealth';
+import { useLogin } from '@/features/auth/hooks/useLogin';
 
 export const LoginPage = () => {
   const { alert } = useServerHealth();
+  const { loginUser, isLoading } = useLogin();
 
   const [email, setEmail] = useState('');
   const [clave, setClave] = useState('');
 
   const navigate = useNavigate();
 
-  const handleLogin2 = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    const result = await loginUser({ email, clave });
 
-    try {
-      await checkHealth();
-    } catch (error) {
-      console.error(error);
+    if (result.success) {
+      navigate('/dashboard');
+    } else if (result.require2FA) {
+      // TODO: Implementar pantalla de 2FA
+      console.log('2FA requerido para usuario:', result.userId);
     }
-
-    console.log(email, clave);
-
-    login({ name: 'Demo User', role: 'student', twoFactorEnabled: true });
-    //navigate('/dashboard', { replace: true });
-  };
-
-  const handleLogin = () => {
-    console.log('handleLogin');
   };
 
   return (

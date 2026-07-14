@@ -1,48 +1,44 @@
 import { useState } from 'react';
-import { authService } from '@/features/auth/services/auth.service';
+import { useApiClient } from '@/api/ApiContext.jsx';
+import { useAuthStore } from '@/stores/auth.store.js';
+import { toast } from 'sonner';
 
 export const useLogin = () => {
+  const api = useApiClient();
+  const login = useAuthStore((state) => state.login);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const executeLogin = async (credentials) => {
+  const loginUser = async ({ email, clave }) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const data = await authService.login(credentials);
+      const response = await api.post('/auth/login', { email, clave });
 
-      // 2FA
-      if (data && data.require2FA) {
+      // Si el usuario tiene 2FA habilitado
+      if (response.require2FA) {
         setIsLoading(false);
-        return { success: true, require2FA: true, userId: data.userId };
+        return { require2FA: true, userId: response.userId };
       }
 
-      // Sin 2FA
+      // Login exitoso sin 2FA
+      login(response);
       setIsLoading(false);
-      return { success: true, require2FA: false, user: data };
+      return { success: true, user: response };
     } catch (err) {
       setIsLoading(false);
-
-      if (err.data && err.data.message) {
-        const apiMessage = err.data.message;
-
-        if (Array.isArray(apiMessage)) {
-          setError(apiMessage[0]);
-        } else {
-          setError(apiMessage);
-        }
-      } else {
-        setError('No se pudo establecer conexión con el servidor.');
-      }
-
-      return { success: false };
+      const errorMessage = err.message || 'Error al iniciar sesión';
+      setError(errorMessage);
+      toast.error(errorMessage);
+      return { success: false, error: errorMessage };
     }
   };
 
   return {
+    loginUser,
     isLoading,
     error,
-    executeLogin,
   };
 };

@@ -7,6 +7,7 @@ import { AuthLayout } from '@/layouts/AuthLayout';
 import { CoursesPage } from '@/features/shared/CoursesPage';
 import { RegisterPage } from '@/features/auth/pages/RegisterPage';
 import { ResetPasswordPage } from '@/features/auth/pages/ResetPasswordPage';
+import { DashboardPage } from '@/features/shared/DashboardPage';
 
 export const router = createBrowserRouter([
   {
@@ -36,11 +37,7 @@ export const router = createBrowserRouter([
           {
             index: true,
             path: 'dashboard',
-            element: (
-              <div className="p-8">
-                <h1 className="text-2xl font-heading">Dashboard</h1>
-              </div>
-            ),
+            element: <DashboardPage />,
           },
         ],
       },

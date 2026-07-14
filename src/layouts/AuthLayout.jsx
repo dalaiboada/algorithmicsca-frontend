@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Flag, Building, GraduationCap, MapPin } from 'lucide-react';
 import { AnimatedBackground } from '@/components/feedback/AnimatedBackground';
 import mapaAlgorithmics from '@/assets/img/mapa-algorithmics.webp';
-import useImage from '@/hooks/use-image';
+import useImage from '@/hooks/useImage';
 import { Spinner } from '@/components';
 
 const FALLBACK_IMAGE = 'https://chacao.alg.academy/_nuxt/img/4d36591.png';
