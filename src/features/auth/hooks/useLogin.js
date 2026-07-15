@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApiClient } from '@/api/ApiContext.jsx';
 import { useAuthStore } from '@/stores/auth.store.js';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 
 export const useLogin = () => {
   const api = useApiClient();

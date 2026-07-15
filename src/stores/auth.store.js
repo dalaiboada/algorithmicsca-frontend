@@ -6,8 +6,11 @@ export const useAuthStore = create(
     (set) => ({
       user: null,
       isAuthenticated: false,
+      pending2FAUserId: null,
       login: (userData) => set({ user: userData, isAuthenticated: true }),
-      logout: () => set({ user: null, isAuthenticated: false }),
+      setPending2FA: (userId) => set({ pending2FAUserId: userId }),
+      logout: () =>
+        set({ user: null, isAuthenticated: false, pending2FAUserId: null }),
     }),
     {
       name: 'auth-storage',

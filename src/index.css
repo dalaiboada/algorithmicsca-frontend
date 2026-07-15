@@ -196,3 +196,25 @@ input:-webkit-autofill::first-line {
     transform: translate(4vw, -7vh) scale(1.15);
   }
 }
+
+/* Sonner toast colors - override inline styles */
+[data-sonner-toast].sonner-success,
+[data-sonner-toast].sonner-success [data-content] {
+  background: #22c55e !important;
+  color: white !important;
+  border-color: #16a34a !important;
+}
+
+[data-sonner-toast].sonner-error,
+[data-sonner-toast].sonner-error [data-content] {
+  background: #ef4444 !important;
+  color: white !important;
+  border-color: #dc2626 !important;
+}
+
+[data-sonner-toast].sonner-warning,
+[data-sonner-toast].sonner-warning [data-content] {
+  background: #eab308 !important;
+  color: white !important;
+  border-color: #ca8a04 !important;
+}

@@ -1,25 +1,33 @@
 import { Typography, Button } from '@/components';
 import { ShieldCheck, CheckCircle, Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from '@/lib/toast';
 import { OtpInput } from '@/features/auth/components/OtpInput';
 import Logo from '/algorithmics-logo_largo.webp';
 
-export const TwoFactorPage = () => {
-  const [isVerifying, setIsVerifying] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
+import { useVerify2fa } from '@/features/auth/hooks/useVerify2fa';
 
-  const handleOtpComplete = (otp) => {
-    setIsVerifying(true);
-    // TODO: Implement actual 2FA verification logic
-    setTimeout(() => {
-      setIsVerifying(false);
+export const TwoFactorPage = () => {
+  const [isVerified, setIsVerified] = useState(false);
+  const { verify2fa, isLoading } = useVerify2fa();
+  const navigate = useNavigate();
+
+  const handleOtpComplete = async (otp) => {
+    try {
+      await verify2fa(otp);
+
       setIsVerified(true);
-      setTimeout(() => setIsVerified(false), 3000);
-    }, 1500);
+
+      toast.success('Verificación exitosa');
+      navigate('/dashboard');
+    } catch (error) {
+      toast.error(error.message || 'Código incorrecto. Intenta nuevamente.');
+    }
   };
 
   const handleCancel = () => {
-    // TODO: Navigate back or handle cancel
+    navigate('/auth');
   };
 
   return (
@@ -34,6 +42,7 @@ export const TwoFactorPage = () => {
             Verificación en dos pasos
           </Typography>
         </div>
+
         <Typography color="gray">
           Ingresa el código de 6 dígitos de tu autenticador.
         </Typography>
@@ -54,10 +63,10 @@ export const TwoFactorPage = () => {
 
           <Button
             type="submit"
-            disabled={isVerifying}
-            className={`w-2/3 ${isVerifying ? 'opacity-80' : ''}`}
+            disabled={isLoading}
+            className={`w-2/3 ${isLoading ? 'opacity-80' : ''}`}
           >
-            {isVerifying ? (
+            {isLoading ? (
               <>
                 Verificando... <Loader2 className="size-4 animate-spin" />
               </>
@@ -70,16 +79,6 @@ export const TwoFactorPage = () => {
             )}
           </Button>
         </div>
-
-        <p className="text-center text-xs text-gray-500 pt-2">
-          ¿No recibiste el código?
-          <button
-            type="button"
-            className="text-purple-500 font-bold hover:underline underline-offset-4 ml-1"
-          >
-            Reenviar
-          </button>
-        </p>
       </form>
     </div>
   );

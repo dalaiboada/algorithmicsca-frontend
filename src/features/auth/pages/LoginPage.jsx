@@ -9,7 +9,6 @@ import {
 } from '@/components';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { toast } from 'sonner';
 
 import Logo from '/algorithmics-logo_largo.webp';
 import GoogleIcon from '@/assets/icons/google-icon.svg';
@@ -17,10 +16,12 @@ import GoogleIcon from '@/assets/icons/google-icon.svg';
 import { ArrowRight, Mail } from 'lucide-react';
 import { useServerHealth } from '@/hooks/useServerHealth';
 import { useLogin } from '@/features/auth/hooks/useLogin';
+import { useAuthStore } from '@/stores/auth.store';
 
 export const LoginPage = () => {
   const { alert } = useServerHealth();
   const { loginUser, isLoading } = useLogin();
+  const { setPending2FA } = useAuthStore();
 
   const [email, setEmail] = useState('');
   const [clave, setClave] = useState('');
@@ -34,8 +35,8 @@ export const LoginPage = () => {
     if (result.success) {
       navigate('/dashboard');
     } else if (result.require2FA) {
-      // TODO: Implementar pantalla de 2FA
-      console.log('2FA requerido para usuario:', result.userId);
+      setPending2FA(result.userId);
+      navigate('/auth/2fa-verify');
     }
   };
 
