@@ -8,6 +8,7 @@ import { CoursesPage } from '@/features/shared/CoursesPage';
 import { RegisterPage } from '@/features/auth/pages/RegisterPage';
 import { ResetPasswordPage } from '@/features/auth/pages/ResetPasswordPage';
 import { DashboardPage } from '@/features/shared/DashboardPage';
+import { TwoFactorPage } from '@/features/auth/pages/TwoFactorPage';
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
       { path: 'register', element: <RegisterPage /> },
       { path: 'reset-password', element: <ResetPasswordPage /> },
       // { path: '2fa-setup', element: <TwoFactorSetupPage /> },
-      // { path: '2fa-verify', element: <TwoFactorVerifyPage /> },
+      { path: '2fa-verify', element: <TwoFactorPage /> },
     ],
   },
   {
